@@ -267,7 +267,7 @@ Use *ngSwitch on a container, and *ngSwitchCase or *ngSwitchDefault inside it
 
 🌟 Angular 17+ @switch (New Syntax, Standalone Components Only)
 
-```
+```html
 @switch (role) {
   @case ('admin') {
     <p>You have admin access</p>
@@ -284,7 +284,30 @@ Use *ngSwitch on a container, and *ngSwitchCase or *ngSwitchDefault inside it
 }
 
 
-
-
 ```
 
+## Array and for loop
+
+
+## style binding
+Style binding in Angular lets you dynamically apply CSS styles to elements based on your component logic.
+
+✅ 1. Single Style Binding
+<div [style.color]="'red'">This text is red</div>
+<div [style.font-size.px]="fontSize">Dynamic font size</div>
+
+✅ 2. Multiple Style Bindings with ngStyle
+<div [ngStyle]="{ color: 'blue', 'font-size.px': 18 }">Styled Text</div>
+
+Or bind it to an object:
+<div [ngStyle]="styles">Another styled text</div>
+styles = {
+  color: 'green',
+  'font-size.px': 20,
+  'font-weight': 'bold'
+};
+
+ Conditional Styling
+ <div [style.backgroundColor]="isActive ? 'lightgreen' : 'lightgray'">
+  Status: {{ isActive ? 'Active' : 'Inactive' }}
+</div>

@@ -37,6 +37,8 @@ export class AppComponent {
 
   info:any ="This is some information"; //property can be any type
   email ="jan@gmail.com"
+i: any;
+
   setname(name:string) {
     let x = 10; //local variable
     this.name = name;
@@ -89,4 +91,20 @@ export class AppComponent {
     toggleShow() {
       this.show = !this.show; // Toggle the value of show
     }
+
+    role:string = 'admin';
+
+    friends:string[] =["Alice", "Bob", "Charlie"] //array of strings
+    items :string[] =["Item 1", "Item 2", "Item 3"] //array of strings
+    userDetails = [
+      { id: 1, name: 'Alice', age: 25 },
+      { id: 2, name: 'Bob', age: 30 },
+      { id: 3, name: 'Charlie', age: 35 }
+    ]; //array of objects
+    userInfo = [
+      { id: 1, name: 'Alice', age: 25, emails:['alice@g.com', 'alice@t.com ']},
+      { id: 2, name: 'Bob', age: 30,emails:['bob@g.com', 'bob@t.com ']},
+      { id: 3, name: 'Charlie', age: 35, emails:['charlie@g.com', 'charlie@t.com '] }
+    ]; //array of objects
+    
 }

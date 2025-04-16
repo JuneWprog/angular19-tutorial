@@ -1,52 +1,57 @@
-<h1>Hi {{title}}</h1>
-<p>{{30+9}}</p>
-<p>{{"Hello " + "World"}}</p>
+<h1>Hi {{ title }}</h1>
+<p>{{ 30 + 9 }}</p>
+<p>{{ "Hello " + "World" }}</p>
 <!-- map the navs list -->
 <ul>
-    <li *ngFor="let user of users">
-        {{ user.name }} (ID: {{ user.id }})
-      </li>
+  <li *ngFor="let user of users">{{ user.name }} (ID: {{ user.id }})</li>
 </ul>
 
-{{'hello'.toUpperCase()}}
+{{ "hello".toUpperCase() }}
 <!-- login component selector  selector: 'app-login', -->
-<app-login/>
+<app-login />
 
 <!-- signup selector change to: 'signup' -->
- <signup/>
+<signup />
 
- <profile/>
+<profile />
 
- <button (click) ="handleButtonClick()"> click me</button>
-    <br/> <br/>
+<button (click)="handleButtonClick()">click me</button>
+<br />
+<br />
 <label for="box1"> Input Change </label>
- <input type="text" #box1 placeholder="Enter your name"  (change) ="box1.value"/>
- <p>The input is {{box1.value}}</p>
+<input
+  type="text"
+  #box1
+  placeholder="Enter your name"
+  (change)="(box1.value)"
+/>
+<p>The input is {{ box1.value }}</p>
 
- <br/> <br/>
- <label for="box2"> Input Keyup </label>
- <input type="text" #box2 placeholder="Enter your name"  (keyup) ="box2.value"/>
- <p>The input is {{box2.value}}</p>
+<br />
+<br />
+<label for="box2"> Input Keyup </label>
+<input type="text" #box2 placeholder="Enter your name" (keyup)="(box2.value)" />
+<p>The input is {{ box2.value }}</p>
 
- <br/> <br/>
- <label for="box3"> Input Button Click </label>
- <input type="text" #box3 placeholder="Enter your name" />
-    <button (click) ="box3.value = ''"> Clear </button>
-    <button (click) ="getInput(box3.value)"> Submit </button>
- <p>The input is {{pContent}}</p>
+<br />
+<br />
+<label for="box3"> Input Button Click </label>
+<input type="text" #box3 placeholder="Enter your name" />
+<button (click)="box3.value = ''">Clear</button>
+<button (click)="getInput(box3.value)">Submit</button>
+<p>The input is {{ pContent }}</p>
 
-
- <br/> <br/>
- <label for="box4"> Input Event </label>
- <input type="text" #box4 placeholder="Enter your name"/>
-    <button (click) ="getInput(box4.value)"> Submit </button>
- <p>The input is {{pContent}}</p>
+<br />
+<br />
+<label for="box4"> Input Event </label>
+<input type="text" #box4 placeholder="Enter your name" />
+<button (click)="getInput(box4.value)">Submit</button>
+<p>The input is {{ pContent }}</p>
 
 <!-- app.component.html -->
 <label for="">Input Event (with $event)</label>
 <input type="text" (input)="onInput($event)" placeholder="Enter your name" />
 <p>The input is: {{ pContent2 }}</p>
-
 
 <h2>Counter</h2>
 
@@ -55,38 +60,131 @@
 <button (click)="increment()">Increment +</button>
 <button (click)="decrement()">Decrement -</button>
 
-
 <p>Count: {{ count }}</p>
 <button (click)="counter('add')">Increment</button>
 <button (click)="counter('minus')">Decrement</button>
-<br/> <br/>
+<br />
+<br />
 <!-- interpolation isDisabled->not works-->
-<input type="text" name="inputAName" value={{name}} disabled ={{isDisabled}} />    
-<br/> <br/>
+<input
+  type="text"
+  name="inputAName"
+  value="{{ name }}"
+  disabled="{{ isDisabled }}"
+/>
+<br />
+<br />
 <!-- property binding  isDisabled->works -->
-<input type="text" [value] = name [disabled] = isDisabled /> 
+<input type="text" [value]="name" [disabled]="isDisabled" />
 
-<!-- if condition -->
-<br/> <br/>
+<!-- if else condition  classical -->
+<br />
+<br />
 
-<button (click)="toggleShow()"> Toggle Show Content</button>
+<button (click)="toggleShow()">Toggle Show Content</button>
 
-<p *ngIf="show"> Show Content </p>
-<br/> <br/>
+<p *ngIf="show">Show Content</p>
+<br />
+<br />
 
-
-<h1 *ngIf = "show; then ifBlock ; else elseBlock"></h1>
+<h1 *ngIf="show; then ifBlock; else elseBlock"></h1>
 <ng-template #ifBlock>
-    <p>If Show Content </p>
+  <p>If Show Content</p>
 </ng-template>
 
 <ng-template #elseBlock>
-    <p>Else Do not Show Content </p>
+  <p>Else Do not Show Content</p>
 </ng-template>
 
-
+<!-- if else 17+-->
 @if(show ){
-    <p>If Show 17+ </p>
-}@else{
-    <p>Else Do not Show 17+ </p>
+<p>If Show 17+</p>
+} @else if(show ===undefined){
+<p>Else If Show is undefined</p>
+} @else {
+<p>Else Do not Show 17+</p>
 }
+
+<!-- switch -->
+@switch (role) { @case ('admin') {
+<p>You have admin access</p>
+} @case ('user') {
+<p>You are a regular user</p>
+} @case ('guest') {
+<p>You are browsing as a guest</p>
+} @default {
+<p>Unknown role</p>
+} }
+
+<!--for loop of Array  -->
+<h2>For Loop</h2>
+<ul>
+  <li *ngFor="let friend of friends; let i = index">
+    {{ i + 1 }}. {{ friend }}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let friend of friends; index as i">{{ i + 1 }}. {{ friend }}</li>
+</ul>
+
+<h3 *ngFor="let detail of userDetails">
+  {{ detail.name }} (ID: {{ detail.id }})
+</h3>
+
+<!-- angular 17+ @for must have a track-->
+
+@for (friend of friends; track friend) {
+<p>{{ friend }}</p>
+}
+
+<ul>
+  @for (item of items; let i = $index; track item) {
+  <li>{{ i + 1 }}. {{ item }}</li>
+  }
+</ul>
+
+<ul>
+  @for(detail of userDetails; track detail) {
+  <li>{{ detail.name }} (ID: {{ detail.id }})</li>
+  }
+</ul>
+
+<!-- nested loop -->
+ <h3>Nested Loop</h3>
+<ul>
+  <li *ngFor="let user of userInfo">
+    {{ user.name }} ({{ user.id }})
+    <ul>
+      <li *ngFor="let email of user.emails">
+        {{ email }}
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+<!-- classical in ul -->
+<ul  *ngFor="let user of userInfo; let i = index">
+  <li>
+    {{ i + 1 }}. {{ user.name }} (ID: {{ user.id }})</li>
+    <ul *ngFor="let email of user.emails">
+      <li >{{ email }}</li>
+    </ul>
+</ul>
+
+<!-- angular 17+ -->
+<ul>
+  @for(user of userInfo; track user.id) {
+  <li>{{ user.name }} (ID: {{ user.id }})</li>
+  Emails:
+  <ul>
+    @for(email of user.emails; track email) {
+    <li>{{ email }}</li>
+    }
+  </ul>
+  }
+</ul>
+
+
+
