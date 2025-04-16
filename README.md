@@ -116,7 +116,8 @@ export class ProfileComponent {}
 
 
 define a function and button click event
-```
+
+```ts
  handleButtonClick =()=> {
     console.log('Button clicked!');
   }
@@ -127,12 +128,25 @@ define a function and button click event
 ```
 
 ## Data Type
+Types
+TypeScript supports all the types used in JavaScript:
+
+boolean
+number
+string
+arrays
+TypeScript also adds the following types:
+
+enum
+any
+void
+```ts
 name:string ="Jun"    
 name = "Jun"       latter you can't change the type   name=15 
 name: any ="Jun"      latter you can change the type  name =15
 
 name:string|number = "Jun:   latter it can be any of these types
-
+```
 
 ## Call function with events
 events: click, change, mouseover, mouseenter, mouseout, keyup, keydown, blur, focus,input 
@@ -177,3 +191,100 @@ getData(val:string){
       operation ==="add"?  this.count++ : this.count--
     }
 ```
+
+## Property Binding
+
+Interpolation lets you embed data directly into the HTML — it's mostly used for setting text content.
+🎯 Use case:
+When you want to display string or number values in the DOM — text content only.
+<p>{{name}}</p>     
+
+
+Property binding sets DOM element properties or component/directive inputs using square brackets.
+🎯 Use case:
+When you're setting anything other than inner text, especially attributes like:
+src, href, disabled, class, value, style, etc.
+<img [src]="imageUrl" />
+<input [value]="username" />
+<button [disabled]="isDisabled">Click Me</button>
+
+
+## if else in html 
+```html
+
+<div *ngIf="isLoggedIn">Welcome back!</div>
+
+
+
+<div *ngIf="isLoggedIn; else notLoggedIn">
+  Welcome back!
+</div>
+
+<ng-template #notLoggedIn>
+  <div>Please log in.</div>
+</ng-template>
+
+
+<ng-container *ngIf="isLoading; then loadingTemplate; else contentTemplate"></ng-container>
+
+<ng-template #loadingTemplate>
+  <p>Loading...</p>
+</ng-template>
+
+<ng-template #contentTemplate>
+  <p>Data loaded!</p>
+</ng-template>
+
+```
+
+✅ Angular 17+ @if / @else Syntax
+
+```html
+@if (status === 'loading') {
+  <p>Loading...</p>
+} @elseif (status === 'error') {
+  <p>Oops! Something went wrong.</p>
+} @else {
+  <p>Content loaded.</p>
+}
+
+
+```
+
+
+✅ Classic Angular *ngSwitch (All Versions)
+🔧 How it works:
+Use *ngSwitch on a container, and *ngSwitchCase or *ngSwitchDefault inside it
+```
+<div [ngSwitch]="role">
+  <p *ngSwitchCase="'admin'">You have admin access</p>
+  <p *ngSwitchCase="'user'">You are a regular user</p>
+  <p *ngSwitchCase="'guest'">You are browsing as a guest</p>
+  <p *ngSwitchDefault>Unknown role</p>
+</div>
+
+```
+
+🌟 Angular 17+ @switch (New Syntax, Standalone Components Only)
+
+```
+@switch (role) {
+  @case ('admin') {
+    <p>You have admin access</p>
+  }
+  @case ('user') {
+    <p>You are a regular user</p>
+  }
+  @case ('guest') {
+    <p>You are browsing as a guest</p>
+  }
+  @default {
+    <p>Unknown role</p>
+  }
+}
+
+
+
+
+```
+

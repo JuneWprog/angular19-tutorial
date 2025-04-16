@@ -59,3 +59,34 @@
 <p>Count: {{ count }}</p>
 <button (click)="counter('add')">Increment</button>
 <button (click)="counter('minus')">Decrement</button>
+<br/> <br/>
+<!-- interpolation isDisabled->not works-->
+<input type="text" name="inputAName" value={{name}} disabled ={{isDisabled}} />    
+<br/> <br/>
+<!-- property binding  isDisabled->works -->
+<input type="text" [value] = name [disabled] = isDisabled /> 
+
+<!-- if condition -->
+<br/> <br/>
+
+<button (click)="toggleShow()"> Toggle Show Content</button>
+
+<p *ngIf="show"> Show Content </p>
+<br/> <br/>
+
+
+<h1 *ngIf = "show; then ifBlock ; else elseBlock"></h1>
+<ng-template #ifBlock>
+    <p>If Show Content </p>
+</ng-template>
+
+<ng-template #elseBlock>
+    <p>Else Do not Show Content </p>
+</ng-template>
+
+
+@if(show ){
+    <p>If Show 17+ </p>
+}@else{
+    <p>Else Do not Show 17+ </p>
+}

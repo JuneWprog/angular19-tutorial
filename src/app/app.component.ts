@@ -61,6 +61,8 @@ export class AppComponent {
       this.pContent2 = inputElement.value;
       console.log(this.pContent2); // Log the input value to the console
     }
+
+    //counter component
     count =0
     increment() {
       if(this.count >= 10) {
@@ -78,5 +80,13 @@ export class AppComponent {
     }
     counter(operation:string){
       operation ==="add"?  this.count++ : this.count--
+    }
+    // property binding
+    isDisabled= false
+
+    //If-else condition
+    show = true
+    toggleShow() {
+      this.show = !this.show; // Toggle the value of show
     }
 }
