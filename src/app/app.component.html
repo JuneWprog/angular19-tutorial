@@ -187,4 +187,20 @@
 </ul>
 
 
+<!-- house  -->
+<h3>House List</h3>
+<section style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+  @for (house of houseingLocations; track house.id) {
+  
+    <housing-location [houselocation] ="house"></housing-location>
+    }
+    
+
+</section>
+
+
+<!-- todos -->
+
+<h3>{{username}}'s Todo List <span>{{itemCount}} </span></h3>
+
 

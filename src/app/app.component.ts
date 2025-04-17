@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
+import { provideRouter } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import {SignupComponent} from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import {HousingLocation} from './housing-location/housing-location.interface';
+import { HouseLocationComponent } from './housing-location/housing-location.component';
+import { TodoItem } from './todo';
+import { TodoList } from './todoList';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, LoginComponent, SignupComponent, ProfileComponent],
+  imports: [RouterOutlet, CommonModule, LoginComponent, SignupComponent, ProfileComponent, HouseLocationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -107,4 +111,25 @@ i: any;
       { id: 3, name: 'Charlie', age: 35, emails:['charlie@g.com', 'charlie@t.com '] }
     ]; //array of objects
     
+    houseingLocations: HousingLocation[] = [
+      {id: 1, name: 'Location 1', city: 'City 1', state: 'State 1', photo: 'photo1.jpg', availableUnits: 5, wifi: true, laundry: false},
+      {id: 2, name: 'Location 2', city: 'City 2', state: 'State 2', photo: 'photo2.jpg', availableUnits: 10, wifi: false, laundry: true},
+      {id: 3, name: 'Location 3', city: 'City 3', state: 'State 3', photo: 'photo3.jpg', availableUnits: 0, wifi: true, laundry: true},
+      {id: 4, name: 'Location 4', city: 'City 4', state: 'State 4', photo: 'photo4.jpg', availableUnits: 2, wifi: false, laundry: false},
+    ]
+
+    //todo list
+    private list = new TodoList("John Doe", [
+      new TodoItem("Buy groceries"),
+      new TodoItem("Clean the house"),
+      new TodoItem("Finish homework"),
+    ]);
+
+    get username(): string {
+      return this.list.user;
+    }
+
+    get itemCount(): number {
+      return this.list.items.length;
+    }
 }

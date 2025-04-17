@@ -58,6 +58,11 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
+Decorator:
+
+ @Component is a decorator, which provides metadata about a class. The @Component  it tells Angular that this is a component.
+
+
 Interpolation
 {{}}
 
@@ -65,6 +70,10 @@ Limit of Interpolation: do not update variable     {{a++}}  {{a=152}}
 
 components:
 4 files      .html  .ts .css   .spec.ts (unit test)
+
+component: 3 parts: template -> .html
+                    component class ->.ts
+                    style    -> .css
 
 ```
 ng generate component login
