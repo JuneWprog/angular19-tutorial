@@ -174,8 +174,12 @@
 </ul>
 
 <!-- angular 17+ -->
+ <!-- $index $first $last $even $odd -->
 <ul>
   @for(user of userInfo; track user.id) {
+    @if($first || $last ){
+      <li style="background-color: aqua;">{{$index+ user.name }} (ID: {{ user.id }})</li>
+    }
   <li>{{ user.name }} (ID: {{ user.id }})</li>
   Emails:
   <ul>
@@ -203,4 +207,23 @@
 
 <h3>{{username}}'s Todo List <span>{{itemCount}} </span></h3>
 
+<br />
 
+<!-- counter -signal -->
+
+<h3>Counter Using Signal</h3>
+<app-counter></app-counter>
+
+
+<!-- routing -->
+<ul>
+
+  <li>
+    <a routerLink="/login">Login</a>
+  </li>
+  <li>
+    <a routerLink="/signup">signup</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

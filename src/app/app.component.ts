@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouterLink } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
@@ -9,11 +9,13 @@ import {HousingLocation} from './housing-location/housing-location.interface';
 import { HouseLocationComponent } from './housing-location/housing-location.component';
 import { TodoItem } from './todo';
 import { TodoList } from './todoList';
+import { CounterComponent } from './counter/counter.component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, LoginComponent, SignupComponent, ProfileComponent, HouseLocationComponent],
+  imports: [RouterOutlet, RouterLink, CommonModule, LoginComponent, SignupComponent, ProfileComponent, HouseLocationComponent, CounterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  standalone: true,
 })
 export class AppComponent {
   title = 'angular-tutorial';

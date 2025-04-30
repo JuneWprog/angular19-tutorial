@@ -1,0 +1,16 @@
+<div style="flex-direction:  column;">
+
+    <p> Counter: <button style="background-color: pink;">{{counter()}}</button></p>
+
+    <p> Computed Double Counter: <button style="background-color: pink;">{{result()}}</button></p>
+   
+</div>
+
+<div>
+    <button (click)="increment()">+</button>
+    <button (click)="decrement()">-</button>
+</div>
+
+@if(displayHeading){
+    <h2> Counter is Multiple of 5 will hide This Heading </h2>
+}
